@@ -15,7 +15,7 @@
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "cookie-parser": "^1.0.1",
-    "debug": "^0.7.4",
+    "debug": "^2.6.9",
     "ejs": "^2.5.7",
     "email-validator": "^1.1.1",
     "express": "^4.0.0",
