@@ -1,0 +1,142 @@
+<%- include('./header.ejs', {path: '../'}); %>
+    <div class="main-container">
+        <section class="text-center height-50">
+            <div class="container pos-vertical-center">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h1>Why become a mentee?</h1>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="imageblock switchable feature-large bg--secondary space--sm">
+            <div class="imageblock__content col-md-6 col-sm-4 pos-right">
+                <div class="background-image-holder">
+                    <img alt="image" src="../img/education-1.jpg" />
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-7">
+                        <h2>Receive wisdom and advice</h2>
+                        <p class="lead">
+                            Ask successful people how they got where they are, and chances are many of them will cite a mentor.
+                        </p>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="imageblock switchable switchable--switch feature-large bg--secondary space--sm">
+            <div class="imageblock__content col-md-6 col-sm-4 pos-right">
+                <div class="background-image-holder">
+                    <img alt="image" src="../img/why-mentee-2.jpg" />
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-7">
+                        <h2>Expanding your personal network</h2>
+                        <p class="lead">
+                            Entering into a mentoring relationship adds your mentor to your
+personal network, and may lead to an introduction to the individuals in the mentor’s network.
+                        </p>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="imageblock switchable feature-large bg--secondary space--sm">
+            <div class="imageblock__content col-md-6 col-sm-4 pos-right">
+                <div class="background-image-holder">
+                    <img alt="image" src="../img/why-mentee-3.jpg" />
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-7">
+                        <h2>Learning new things about yourself</h2>
+                        <p class="lead">
+                            The self-reflection that can result from a mentoring
+relationship can be a powerful growth experience and provide you with new insights about yourself.
+                        </p>
+                    </div>
+                </div>
+                <!--end of row-->
+            </div>
+            <!--end of container-->
+        </section>
+        <section class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <div class="cta">
+                                <h2>We’re always looking for new members</h2>
+                                <p class="lead">
+                                    Do you want to become a mentee or a mentor? Great!
+                                </p>
+                                <div class="modal-instance">
+                                    <a class="btn btn--sm btn--primary type--uppercase modal-trigger" href="">
+                                        <span class="btn__text">
+                                            Become member
+                                        </span>
+                                    </a>
+                                    <div class="modal-container">
+                                        <div class="modal-content">
+                                            <section class="imageblock feature-large bg--site border--round ">
+                                                <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+                                                    <div class="background-image-holder">
+                                                        <img alt="image" src="../img/product-small-4.jpg" />
+                                                    </div>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
+                                                            <h2>Sign up</h2>
+                                                           <p>
+                                                                - Professionals can register as mentors to help AUCA students. After our team verifies a mentor, she/he can see students’ full profile and send requests.
+                                                            </p>
+                                                            <p>
+                                                                - All AUCA students can become  our mentees. Information provided is important for “prescreen” stage. Only those with high motivation will be aproved and showed on the “mentees list”.
+                                                            </p>
+                                                            <form method="post" action="/user/signup" class="form--clearfix">
+                                                                <div class="col-sm-12">
+                                                                    <div class="input-select">
+                                                                        <select name="status">
+                                                                            <option selected="" value="1">Mentor</option>
+                                                                            <option value="0">Student</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                                    <input type="text" placeholder="Email" name="email"/>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <input type="password" placeholder="Password" name="password"/>
+                                                                                </div>
+
+                                                                <div class="col-sm-6 col-md-8">
+                                                                    <button type="submit" class="btn btn--primary">Done</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <!--end of row-->
+                                                </div>
+                                                <!--end of container-->
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+<%- include('./footer.ejs', {path: '../'}); %>

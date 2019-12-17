@@ -1,0 +1,271 @@
+<%- include('./header.ejs', {path: '../'}); %>
+		<div class="main-container">
+						<section class="bg--secondary space--sm">
+								<div class="container">
+										<div class="row">
+												<div class="col-md-4">
+														<div class="boxed boxed--lg boxed--border">
+																<div class="text-block text-center">
+																		<img alt="avatar" class="img-circle" src="../images/<%= authorized.pic %>" class="image--sm" />
+																		<span class="h5"><%= authorized.email %></span>
+																</div>
+																<hr>
+																<div class="text-block">
+																		<ul class="menu-vertical">
+																				<li>
+																						<a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-profile;hidden">Profile</a>
+																				</li>
+																				<li>
+																						<a href="#" data-toggle-class=".account-tab:not(.hidden);hidden|#account-password;hidden">Password</a>
+																				</li>
+																				<li>
+																						<a href="/profiles/logout">Logout</a>
+																				</li>
+																		</ul>
+																</div>
+														</div>
+												</div>
+												<div class="col-md-8">
+														<div class="boxed boxed--lg boxed--border">
+																<div id="account-profile" class="account-tab">
+																		<h4> Profile </h4>
+																		
+																		<form action="/profiles/update/profile" method="post" enctype="multipart/form-data">
+																				<div class="row">
+																						<input type="hidden" name="_id" value="<%= authorized._id %>" />
+
+																						<div class="col-sm-6">
+																								<label>Real Name:</label>
+																								<input id="name" type="text" name="name" value="<%= authorized.name%>" />
+																						</div>
+																						<% if(authorized.year.length == 0 ||  authorized.department.length == 0) { %>
+																							<div class="col-sm-12">
+																								<select id="department" name="department">
+																								  <option value="">Chose your department</option>
+																								  <option value="American Studies">American Studies</option>
+																								  <option value="Anthropology">Anthropology</option>
+																								  <option value="Business Administration">Business Administration</option>
+																								  <option value="Economics">Economics</option>
+																								  <option value="Environmental Sustainability">Environmental Sustainability</option>
+																								  <option value="European Studies">European Studies</option>
+																								  <option value="International and Business Law">International and Business Law</option>
+																								  <option value="International and Comparative Politics">International and Comparative Politics</option>
+																								  <option value="Journalism and Mass Communications">Journalism and Mass Communications</option>
+																								  <option value="Psychology">Psychology</option>
+																								  <option value="Software Engineering">Software Engineering</option>
+																								  <option value="Other">Other</option>
+																								</select>
+																							</div>
+
+																							<div class="col-sm-12">
+																								<select id="year" name="year">
+																								  <option value="">Year of graduation</option>
+																								  <option value="2023">2023</option>
+																								  <option value="2022">2022</option>
+																								  <option value="2021">2021</option>
+																								  <option value="2020">2020</option>
+																								  <option value="2019">2019</option>
+																								  <option value="2018">2018</option>
+																								  <option value="2017">2017</option>
+																								  <option value="2016">2016</option>
+																								  <option value="2015">2015</option>
+																								  <option value="2014">2014</option>
+																								  <option value="2013">2013</option>
+																								  <option value="2012">2012</option>
+																								  <option value="2011">2011</option>
+																								  <option value="2010">2010</option>
+																								  <option value="2009">2009</option>
+																								  <option value="2008">2008</option>
+																								  <option value="2007">2007</option>
+																								  <option value="2006">2006</option>
+																								  <option value="2005">2005</option>
+																								  <option value="2004">2004</option>
+																								  <option value="2003">2003</option>
+																								  <option value="2002">2002</option>
+																								  <option value="2001">2001</option>
+																								  <option value="2000">2000</option>
+																								  <option value="1999">1999</option>
+																								  <option value="1998">1998</option>
+																								  <option value="1997">1997</option>
+																								  <option value="1996">1996</option>
+																								  <option value="1995">1995</option>
+																								  <option value="Other">Other</option>
+																								</select>
+																							</div>
+																						<% } %>
+																						<div class="col-sm-12">
+																							<label>Bio:</label> 
+																							<% if(!authorized.status) { %>
+																								<a href="#demos" class="inner-link"> examples </a>
+																							<% } %>
+																							<textarea id="about" value="<%= authorized.about %>" rows="4" name="about"><%= authorized.about %></textarea>
+																						</div>
+																						<!--field only for students-->
+																						<% if(!authorized.status) { %>
+																								<div class="col-sm-12">
+																										<label>Spesific goal
+																										<% if(authorized.goal.length < 110) { %>
+																												<span class="red"> (goal description should be more than 110 characters)</span>
+																										<% } %>
+																										:</label>
+																										<a class="inner-link" href="#demos"> examples </a>
+																										<textarea id="goal" value="<%= authorized.goal %>"rows="4" name="goal"><%= authorized.goal %></textarea>
+																								</div>
+																						<% } %>
+																						<div  id="demos" class="col-sm-12">
+																								<label>Profile picture:</label>
+																								<input type="file" name="pic" accept="image/*">
+																						</div>
+																						<% if(!authorized.status) {%>
+																							<div class="col-sm-12">
+																	<ul class="accordion accordion-1">
+																			Got stuck? Follow these questions to fill "Bio" and "Goal"
+																		<li>
+																			<div class="accordion__title">
+																				<span class="h5">Why you chose your field of study?</span>
+																			</div>
+																			<div class="accordion__content">
+																				<p class="lead">
+																					Hi, my name is Aibek. Currently, I am studying third year on Economics department. I was always interested in financial markets and business world, and my curiosity brought me to economics. In addition, my skills were suitable for this area, specifically my strong background in mathematics.
+																				</p>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="accordion__title">
+																				<span class="h5">Provide some of your achievements.</span>
+																			</div>
+																			<div class="accordion__content">
+																				<p class="lead">
+																					In the school ( #61), I had good academic records and my passion in math helped me to win third place in regional math competition. It cost me a lot of efforts, but the gain worth it.
+																				</p>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="accordion__title">
+																				<span class="h5">Where do you see your career?</span>
+																			</div>
+																			<div class="accordion__content">
+																				<p class="lead">
+																					From now, I am planning my professional career and I think I need some help from someone experienced. After graduation, I see myself in audit. It is not easy to get into big firms in this industry, so I need a lot of preparation.
+																				</p>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="accordion__title">
+																				<span class="h5">What are your personal interests?</span>
+																			</div>
+																			<div class="accordion__content">
+																				<p class="lead">
+																					Beside my studies, I love cycling and playing football. Every week we play football with my friends, and sometimes I go cycling to mountains. These activities keep me in shape, and help to freshen my mind. 
+																				</p>
+																			</div>
+																		</li>
+																		<li>
+																			<div class="accordion__title">
+																				<span class="h5">Goal description.</span>
+																			</div>
+																			<div class="accordion__content">
+																				<p class="lead">
+																					As I stated above, I want to proceed my career in audit. I want to learn what is needed to
+	get into this field, and which skills I need to develop. Moreover, I think internship would be helpful for me, so I need to prepare myself to get an internship. By now, I do not in which direction I should develop myself. Experienced mentor could help me with preparation and provide some advices and guidance.
+																				</p>
+																			</div>
+																		</li>
+																	</ul>
+																  </div>
+																<% } %>
+																						<div class="col-md-3 col-sm-4">
+																								<button type="submit" class="btn btn--primary type--uppercase">Save Profile</button>
+																						</div>
+																				</div>
+																		</form>
+
+																		 <div class="col-sm-6">
+																				<div class="modal-instance">
+																						<input type="hidden" id="modal-trigger" class="btn modal-trigger">
+																						<div class="modal-container" id="modal-container">
+																								<div class="modal-content" id="modal-content">
+																										<div class="boxed boxed--lg">
+																												<h2>Fill out your profile.</h2>
+																												<hr class="short">
+																												<p class="lead">
+																														<% if(!authorized.status) { %>
+																															Hey, please fill out your profile. It is needed to verify your account and persuade a mentor to choose you. Your effort will be paid off.
+																														<% } else { %>
+																															Hey, please fill out your profile. It is needed to verify your account. After verification you can view student profiles and send requests.
+																														<% } %>
+																												</p>
+																										</div>
+																								</div>
+																						</div>
+																				</div>
+																				<!--end of modal instance-->
+																		</div>
+
+																</div>
+																<div id="account-password" class="hidden account-tab">
+																		<h4>Password</h4>
+																		<p>Passwords must be at least 6 characters in length.</p>
+																		<form method="get" action="/profiles/update/password">
+																				<div class="row">
+																						<input type="hidden" name="_id" value="<%= authorized._id %>" />
+
+																						<div class="col-xs-12">
+																								<label>Old Password:</label>
+																								<input type="text" name="oldPassword" />
+																						</div>
+																						<div class="col-sm-6">
+																								<label>New Password:</label>
+																								<input type="text" name="newPassword" />
+																						</div>
+																						<div class="col-sm-6">
+																								<label>Retype New Password:</label>
+																								<input type="text" name="confirmPassword" />
+																						</div>
+																						<div class="col-md-3 col-sm-4">
+																								<button type="submit" class="btn btn--primary type--uppercase">Save Password</button>
+																						</div>
+																				</div>
+																		</form>
+																</div>
+														</div>
+												</div>
+										</div>
+										<!--end of row-->
+								</div>
+								<!--end of container-->
+						</section>
+<script>
+
+		var name = document.getElementById("name").value;
+		var about = document.getElementById("about").value;
+
+		if(document.getElementById("goal")) {
+			var goal = document.getElementById("goal").value;
+		} else {
+			var goal = 'true';
+		}
+
+		if(document.getElementById("department")) {
+			var department = document.getElementById("department").value;
+		} else {
+			var department = "true"
+		}
+
+		if(document.getElementById("year")) {
+			var year = document.getElementById("year").value;
+		} else {
+			var year = 'true';
+		}
+
+		if(department.length > 0 && year.length > 0 && name.length > 0 && about.length > 0 && goal.length > 0) {
+			console.log('Profile filled.');
+		} else {
+			window.onload = function() {
+				document.getElementById("modal-trigger").click();
+			}
+		}
+
+</script>
+
+<%- include('./footer.ejs', {path: '../'}); %>

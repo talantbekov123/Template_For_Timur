@@ -1,0 +1,83 @@
+<%- include('./header.ejs', {path: '../'}); %>
+    <div class="main-container">
+            <section class="bg--secondary space--sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="boxed boxed--lg boxed--border">
+                                <div class="text-block text-center">
+                                    <img alt="avatar" class="img-circle" src="../images/<%= student.pic %>" class="image--md" />
+                                    <span class="h5"><%= student.name %> </span>
+                                    <% if(student.status) { %>
+                                        <a href="/relations/add?from=<%= authorized._id %>&to=<%= student._id %>" class="">Send friend request.</a>
+                                    <% } %>
+                                </div>
+                                <div class="text-block clearfix text-center">
+                                    <ul class="row row--list">
+                                        <li class="col-sm-4">
+                                            <% if(student.status) { %>
+                                                <span class="type--fine-print block">Status:</span>
+                                                <span>Mentor</span>
+                                            <% } else { %>
+                                                <span class="type--fine-print block">Status:</span>
+                                                <span>Student</span>
+                                            <% } %>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <span class="type--fine-print block">Graduation Year:</span>
+                                            <span><%= student.year %></span>
+                                        </li>
+                                        <li class="col-sm-4">
+                                            <span class="type--fine-print block">Department:</span>
+                                            <%= student.department %>
+                                        </li>
+                                </div>
+                                </ul>
+                            </div>
+                            <div class="boxed boxed--border">
+                                <% if(!student.status) { %>
+                                    <h4>Goal description</h4>
+                                    <ul>
+                                        <li class="clearfix">
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-3 text-center">
+                                                    <div class="icon-circle">
+                                                        <i class="icon icon--lg material-icons">map</i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8 col-xs-7">
+                                                    <span class="type--fine-print"> <a href="/relations/add?from=<%= authorized._id %>&to=<%= student._id %>" class="">Apply as a mentor</a>
+                                                    <p>
+                                                        <%= student.goal %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                <% } %>
+                                <h4> Bio </h4>
+                                                              
+                                <ul>
+                                    <li class="clearfix">
+                                        <div class="row">
+                                            <div class="col-md-2 col-xs-3 text-center">
+                                                <div class="icon-circle">
+                                                    <i class="icon icon--lg material-icons">fingerprint</i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-xs-7">
+                                                <p>
+                                                    <%= student.about %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+<%- include('./footer.ejs', {path: '../'}); %>

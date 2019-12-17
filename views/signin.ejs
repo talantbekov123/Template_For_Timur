@@ -1,0 +1,43 @@
+<%- include('./header.ejs', {path: '../'}); %>
+<div class="main-container">
+    <section class="height-100 imagebg text-center" data-overlay="4">
+        <div class="background-image-holder">
+            <img alt="background" src="../img/inner-6.jpg" />
+        </div>
+        <div class="container pos-vertical-center">
+            <div class="row">
+                <div class="col-sm-7 col-md-5">
+                    <h2>Sign in</h2>
+                    <% if(message) { %>
+                        <p class="lead">
+                            <%= message %>
+                        </p>
+                    <% } %>
+                    <form method="post" action="/user/signin">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input name="email" type="text" placeholder="Email" />
+                            </div>
+                            <div class="col-sm-12">
+                                <input name="password" type="password" placeholder="Password" />
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn--primary type--uppercase" type="submit">Login</button>
+                            </div>
+                        </div>
+                        <!--end of row-->
+                    </form>
+                    <span class="type--fine-print block">Dont have an account yet?
+                        <a href="/user/signup">Create account</a>
+                    </span>
+                    <span class="type--fine-print block">Forgot your username or password?
+                        <a href="/user/recover">Recover account</a>
+                    </span>
+                </div>
+            </div>
+            <!--end of row-->
+        </div>
+        <!--end of container-->
+    </section>
+</div>
+<%- include('./footer.ejs', {path: '../'}); %>

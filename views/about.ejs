@@ -1,0 +1,131 @@
+<%- include('./header.ejs', {path: './'}); %>
+        <div class="main-container">
+            <section class="text-center height-50">
+                <div class="container pos-vertical-center">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-6">
+                            <h1>Hi, We’re MentorKG
+</h1>
+                            <p class="lead">
+                                An online platform, which aims to connect mentors with students to boost student's professional growth. How it works? Very easy!
+                            </p>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="process-1">
+                                <div class="process__item">
+                                    <h4>AUCA students’ application</h4>
+                                    <p>
+                                        All AUCA students can apply by creating their own profile in our platform and answering few questions. Information provided is important for “prescreen” stage and mentors will choose mentees according to this data.
+                                    </p>
+                                </div>
+                                <div class="process__item">
+                                    <h4>Prescreen</h4>
+                                    <p>
+                                        Our team prescreens all students and only those with high motivation will be on the “mentees list”.
+                                    </p>
+                                </div>
+                                <div class="process__item">
+                                    <h4>Mentor’s registration</h4>
+                                    <p>
+                                        Professionals can register as mentors to help AUCA students. After our team verifies a mentor, she/he can see students’ full profile and send requests.
+                                    </p>
+                                </div>
+                                <div class="process__item">
+                                    <h4>Mentor’s choice</h4>
+                                    <p>
+                                        After a registration, a mentor gets a full access to “mentees list” (students verified by our team). From this list, a mentor can choose a student to help.
+                                    </p>
+                                </div>
+                                <div class="process__item">
+                                    <h4>Connection</h4>
+                                    <p>
+                                        When mentor chooses a mentee, he/she can contact him/her by our messenger. Then, a mentee gets an access to the “mentor’s profile”.
+                                    </p>
+                                </div>
+                            </div>
+                            <!--end process-->
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            <section class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                            <div class="cta">
+                                <h2>We’re always looking for new members</h2>
+                                <p class="lead">
+                                    Do you want to become a mentee or a mentor? Great!
+                                </p>
+                                <div class="modal-instance">
+                                    <a class="btn btn--sm btn--primary type--uppercase modal-trigger" href="">
+                                        <span class="btn__text">
+                                            Become member
+                                        </span>
+                                    </a>
+                                    <div class="modal-container">
+                                        <div class="modal-content">
+                                            <section class="imageblock feature-large bg--site border--round ">
+                                                <div class="imageblock__content col-md-5 col-sm-4 pos-left">
+                                                    <div class="background-image-holder">
+                                                        <img alt="image" src="img/product-small-4.jpg" />
+                                                    </div>
+                                                </div>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-md-push-6 col-sm-6 col-sm-push-4">
+                                                            <h2>Sign up</h2>
+                                                           <p>
+                                                                - Professionals can register as mentors to help AUCA students. After our team verifies a mentor, she/he can see students’ full profile and send requests.
+                                                            </p>
+                                                            <p>
+                                                                - All AUCA students can become  our mentees. Information provided is important for “prescreen” stage. Only those with high motivation will be aproved and showed on the “mentees list”.
+                                                            </p>
+                                                            <form method="post" action="/user/signup" class="form--clearfix">
+                                                                <div class="col-sm-12">
+                                                                    <div class="input-select">
+                                                                        <select name="status">
+                                                                            <option selected="" value="1">Mentor</option>
+                                                                            <option value="0">Student</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                                    <input type="text" placeholder="Email" name="email"/>
+                                                                                </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <input type="password" placeholder="Password" name="password"/>
+                                                                                </div>
+
+                                                                <div class="col-sm-6 col-md-8">
+                                                                    <button type="submit" class="btn btn--primary">Done</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <!--end of row-->
+                                                </div>
+                                                <!--end of container-->
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+<%- include('./footer.ejs', {path: './'}); %>
+   

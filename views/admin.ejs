@@ -1,0 +1,127 @@
+<%- include('./header.ejs', {path: './'}); %>
+<div class="main-container">
+            <section class="text-center">
+                <div class="container">
+                    <div class="row">
+                            <p> Students </p>
+
+                            <% for(var i = 0; i < users.length; i++) { %>
+                                <% if(!users[i].status) { %>
+                                    <% if(users[i].active) {%>
+                                        <span class="btn__text btn bg--facebook">Activated</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Activated</span>
+                                    <% } %>
+
+                                    <% if(users[i].verified) {%>
+                                        <span class="btn__text btn bg--facebook">Verified</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Verified</span>
+                                    <% } %>
+
+                                    <% if(users[i].about) {%>
+                                        <span class="btn__text btn bg--facebook">Bio</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Bio</span>
+                                    <% } %>
+
+                                    <% if(users[i].goal) {%>
+                                        <span class="btn__text btn bg--facebook">Goal</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Goal</span>
+                                    <% } %>
+
+                                    <span class="btn__text btn"><a href="/profiles/public?_id=<%= users[i]._id %>">Profile</a></span>
+                                    <span class="btn__text btn"><a href="/user/activate?_id=<%= users[i]._id %>">Activate</a></span>
+                                    <span class="btn__text btn"><a href="/user/deactivate?_id=<%= users[i]._id %>">De-Activate</a></span>
+			                            	<div class="modal-instance">
+			                                <a class="modal-trigger" href="#">
+                                        Send
+			                                </a>
+			                                <div class="modal-container">
+			                                    <div class="modal-content">
+		                                        <div class="boxed boxed--lg">
+	                                            <h2>Send message to <%= users[i].email %></h2>
+	                                            <hr class="short">
+	                                            <form action="/message/send" method="post">
+	                                            	<input type="hidden" name="from" value="<%= authorized._id %>" />
+	                                            	<input type="hidden" name="to" value="<%= users[i]._id %>" />
+																								<div class="row">
+																									<div class="col-sm-12">
+																											<textarea cols="100" rows="4" name="message"> </textarea>
+																									</div>
+																  							</div>
+	                                            	<input type="submit" value="Submit"/>
+																							</form>					               
+																						</div>
+			                                    </div>
+			                                </div>
+				                            </div>
+                                    <br>
+                                    <br>
+                                <% } %>
+                            <% } %>
+                        </div>
+                       
+
+                    <div class="row">
+                        <p> Mentors </p>
+
+                            <% for(var i = 0; i < users.length; i++) { %>
+                                <% if(users[i].status) { %>
+
+                                    <% if(users[i].active) {%>
+                                        <span class="btn__text btn bg--facebook">Activated</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Activated</span>
+                                    <% } %>
+
+                                    <% if(users[i].verified) {%>
+                                        <span class="btn__text btn bg--facebook">Verified</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Verified</span>
+                                    <% } %>
+
+                                    <% if(users[i].about) {%>
+                                        <span class="btn__text btn bg--facebook">Bio</span>
+                                    <% } else { %>
+                                        <span class="btn__text btn bg--googleplus">Bio</span>
+                                    <% } %>
+
+                                    <span class="btn__text btn"><a href="/profiles/public?_id=<%= users[i]._id %>">Profile</a></span>
+                                    <span class="btn__text btn"><a href="/user/activate?_id=<%= users[i]._id %>">Activate</a></span>
+                                    <span class="btn__text btn"><a href="/user/deactivate?_id=<%= users[i]._id %>">De-Activate</a></span>
+                                    <div class="modal-instance">
+			                                <a class="modal-trigger" href="#">
+                                        Send
+			                                </a>
+			                                <div class="modal-container">
+			                                    <div class="modal-content">
+		                                        <div class="boxed boxed--lg">
+	                                            <h2>Send message to <%= users[i].email %></h2>
+	                                            <hr class="short">
+	                                            <form action="/message/send" method="post">
+	                                            	<input type="hidden" name="from" value="<%= authorized._id %>" />
+	                                            	<input type="hidden" name="to" value="<%= users[i]._id %>" />
+																								<div class="row">
+																									<div class="col-sm-12">
+																											<textarea cols="100" rows="4" name="message"> </textarea>
+																									</div>
+																  							</div>
+	                                            	<input type="submit" value="Submit"/>
+																							</form>					               
+																						</div>
+			                                    </div>
+			                                </div>
+				                            </div>
+                                    <br>
+                                    <br>
+                                <% } %>
+                            <% } %>
+                       
+                    </div>
+                    <!--end of row-->
+                </div>
+            </section>
+<br><br><br><br><br><br>
+<%- include('./footer.ejs', {path: './'}); %>

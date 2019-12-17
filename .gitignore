@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+# Error messages
+npm-debug.log
+
+# Profile pics stored only on server
+public/images/
+
+# Logs also stored only on server
+logs/

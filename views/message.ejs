@@ -1,0 +1,126 @@
+<%- include('./header.ejs', {path: './'}); %>
+        <!--end bar-->
+       
+        <div class="main-container">
+            <section class="bg--secondary space--sm conversation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-md-push-8">
+                            <div class="boxed boxed--lg boxed--border" data-scroll-class="180px:pos-fixed">
+                                <div class="text-block text-center">
+                                    <img alt="avatar" src="../images/<%= authorized.pic %>" class="image--sm" />
+                                    <span class="h5"><%= authorized.name %></span>
+                                </div>
+                                <hr>
+                                <div class="text-block">
+                                    Friend list
+                                    <ul class="menu-vertical">
+                                        <% for(var i = 0; i < friend_list.length; i++) { %>
+                                            <% if(friend_list[i].to._id != authorized._id) {%>
+                                                <li>
+                                                    <a onclick="select('<%= friend_list[i].to.name %>', '<%= friend_list[i].to._id %>')"><%= friend_list[i].to.name %></a>
+                                                </li>
+                                            <% } else {%>
+                                                <li>
+                                                    <a onclick="select('<%= friend_list[i].from.name %>', '<%= friend_list[i].from._id %>')"><%= friend_list[i].from.name %></a>
+                                                </li>
+                                            <% } %>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-md-pull-4">
+                            
+                            <div class="conversation__reply boxed boxed--border">
+                                <form name="form" onsubmit="return validateForm()" method="post" action="/message/send"> 
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <input name="to_user" id="to_user" type="text" placeholder="Select friend from friend list">
+                                            <input id="to" type="hidden" name="to">
+                                            <input type="hidden" name="from" value="<%= authorized._id %>">
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <textarea rows="4" name="message" placeholder="Type message here"></textarea>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="submit" class="btn">Send</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="modal-instance">
+                                                <input type="hidden" id="modal-trigger" class="btn modal-trigger">
+                                                <div class="modal-container" id="modal-container">
+                                                    <div class="modal-content" id="modal-content">
+                                                        <div class="boxed boxed--lg">
+                                                            <h2>Select friend from friend list</h2>
+                                                            <hr class="short">
+                                                            <p class="lead">
+                                                                In order to select friend, just click to friend name under you profile name.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end of modal instance-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="comments conversation__comments">
+                                <ul class="comments__list">
+                                    <% for(var i = 0; i < messages.length; i++) { %>
+                                        <li>
+                                            <div class="comment">
+                                                <div class="comment__avatar">
+                                                    <% if(messages[i].from._id == authorized._id) {%>
+                                                        <img alt="Image" src="../images/<%= messages[i].to.pic %>" />
+                                                    <% } else { %>
+                                                        <img alt="Image" src="../images/<%= messages[i].from.pic %>" />
+                                                    <% } %>
+                                                    
+                                                </div>
+                                                <div class="comment__body">
+                                                    <h5 class="type--fine-print">
+                                                        <% if(messages[i].from._id == authorized._id) {%>
+                                                            To: <%= messages[i].to.name %>
+                                                        <% } else { %>
+                                                            From: <%= messages[i].from.name %>
+                                                        <% } %>
+                                                        
+                                                    </h5>
+                                                    <div class="comment__meta">
+                                                        <span> <%= messages[i].created_at %> </span>
+                                                    </div>
+                                                    <p>
+                                                        <%= messages[i].message %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!--end comment-->
+                                        </li>
+                                    <% } %>
+                                </ul>
+                            </div>
+                            <!--end comments-->
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+<script>
+    function select(user_name, _id) {
+        document.getElementById("to_user").value = user_name;
+        document.getElementById("to").value = _id;
+    }
+
+    function validateForm() {
+        var x = document.forms["form"]["to"].value;
+        if (x == "") {
+            document.getElementById("modal-trigger").click()
+            return false;
+        }
+    }
+</script>
+<%- include('./footer.ejs', {path: './'}); %>
+  
